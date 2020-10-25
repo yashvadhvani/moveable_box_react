@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import Button from './common/Button'
 import Square from './common/Square'
-import { handleAdd, handleSelect } from '../actions/shared'
+import { handleAdd } from '../actions/shared'
 import { handleKey } from '../actions/squares'
 import './Dashboard.css';
 
@@ -12,9 +12,8 @@ import './Dashboard.css';
 
 export default function Dashboard() {
   const dispatch = useDispatch();
-  const { selected, squares } = useSelector(state => ({
+  const { squares } = useSelector(state => ({
     squares: state.squares, 
-    selected: state.selected,
   }));
   useEffect(() => {
     const handleKeyDown = event => {
@@ -25,7 +24,7 @@ export default function Dashboard() {
     return () => {
       document.removeEventListener('keydown', handleKeyDown)
     }
-  }, [])
+  }, [dispatch])
 
   return (
     <div>

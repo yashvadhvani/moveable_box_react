@@ -86,9 +86,14 @@ const handleKey = (key) => (dispatch, getState) => {
       case 'Delete':
         dispatch(deleteSquare(selected))
         break;
+      default:
+        break;
     }
-  } else{
-    alert('Please Select a box first')
+  } else {
+    if (["w", "W", "ArrowUp", "s", "S", "ArrowDown", "a", "A", "ArrowLeft", "d", "D", "ArrowRight", "Delete"].includes(key)
+      && Object.keys(squares)
+    )
+      alert('Please Select a box first')
   }
 }
 
