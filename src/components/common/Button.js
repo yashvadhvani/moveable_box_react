@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function Button(props) {
   return (
-    <button onClick={props.onClick}>{props.text}</button>
+    <button className="button button2" onClick={props.onClick}>{props.text}</button>
   )
 }

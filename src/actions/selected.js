@@ -1,11 +1,11 @@
-const SELECT_SQUARE = 'SELECT_SQUARE';
+const SET_SELECTED = 'SET_SELECTED';
 
 const setSelected = (zIndex) => ({
-  type: SELECT_SQUARE,
+  type: SET_SELECTED,
   zIndex
 })
 
 export {
-  SELECT_SQUARE,
+  SET_SELECTED,
   setSelected
 }

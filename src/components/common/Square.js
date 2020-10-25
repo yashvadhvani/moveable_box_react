@@ -1,6 +1,6 @@
 import React from 'react'
 import './Common.css';
-import { selectSquare } from '../../actions/squares'
+import { handleSelect } from '../../actions/shared'
 
 import { useDispatch } from "react-redux";
 
@@ -10,7 +10,7 @@ export default function Square(props) {
     <div id={props.styles.zIndex} 
     className="square" 
     style={{...props.styles}}
-    onClick = {() =>  dispatch(selectSquare(props.styles.zIndex))}>
+    onClick = {() =>  dispatch(handleSelect(props.styles.zIndex))}>
     </div>
   )
 }

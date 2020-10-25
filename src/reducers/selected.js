@@ -1,8 +1,8 @@
-import { SELECT_SQUARE } from '../actions/squares'
+import { SET_SELECTED } from '../actions/selected'
 
 const selected = (state = 0, action) => {
   switch (action.type) {
-    case SELECT_SQUARE: {
+    case SET_SELECTED: {
       return action.zIndex
     }
     default:

@@ -14,9 +14,10 @@ const deleteSquare = (selected) => ({
   selected
 })
 
-const selectSquare = (zIndex) => ({
+const selectSquare = (style, selected) => ({
   type: SELECT_SQUARE,
-  zIndex
+  style,
+  selected
 })
 
 const moveSquare = (style, selected) => ({
@@ -86,6 +87,8 @@ const handleKey = (key) => (dispatch, getState) => {
         dispatch(deleteSquare(selected))
         break;
     }
+  } else{
+    alert('Please Select a box first')
   }
 }
 

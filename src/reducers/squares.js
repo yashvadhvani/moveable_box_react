@@ -1,4 +1,4 @@
-import { DELETE_SQUARE, ADD_SQUARE, MOVE_SQUARE } from '../actions/squares'
+import { DELETE_SQUARE, ADD_SQUARE, MOVE_SQUARE, SELECT_SQUARE } from '../actions/squares'
 
 const squares = (state = {}, action) => {
   switch (action.type) {
@@ -19,8 +19,21 @@ const squares = (state = {}, action) => {
       delete newState[action.selected]
       return newState;
     }
+    case SELECT_SQUARE: {
+      const newState = { ...state }
+      Object.keys(newState).forEach((element) => {
+        newState[element]= {
+          ...newState[element],
+          "border-style": "dotted"
+        }
+      })
+      newState[action.selected] = {
+        ...newState[action.selected],
+        ...action.style
+      }
+      return newState;
+    }
     case MOVE_SQUARE: {
-      console.log(action)
       return {
         ...state,
         [action.selected]: {
