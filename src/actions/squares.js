@@ -59,7 +59,8 @@ const handleKey = (key) => (dispatch, getState) => {
       case 's':
       case 'S':
       case 'ArrowDown':
-        if (top + 200 < 790) {
+        //Dedudcted 10px : 5px for box border 5px for fence border 
+        if (top + 200 < 800 -10) {
           dispatch(moveSquare({
             top: `${top + 5}px`,
             left: selectedSquare.left,
@@ -84,7 +85,7 @@ const handleKey = (key) => (dispatch, getState) => {
       case 'd':
       case 'D':
       case 'ArrowRight':
-        if (left + 200 < window.innerWidth - 40) {
+        if (left + 200 < 1800 - 10) {
           dispatch(moveSquare({
             left: `${left + 5}px`,
             top: selectedSquare.top,
