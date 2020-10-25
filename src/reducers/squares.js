@@ -1,5 +1,13 @@
-import { DELETE_SQUARE, ADD_SQUARE, MOVE_SQUARE, SELECT_SQUARE } from '../actions/squares'
+import { DELETE_SQUARE, ADD_SQUARE, MOVE_SQUARE, SELECT_SQUARE, DELETE_ALL_SQUARE, RESET_SELECTION } from '../actions/squares'
 
+const setBorderStyle = (newState) =>{
+  Object.keys(newState).forEach((element) => {
+    newState[element]= {
+      ...newState[element],
+      "border-style": "dotted"
+    }
+  })
+}
 const squares = (state = {}, action) => {
   switch (action.type) {
     case ADD_SQUARE:
@@ -21,12 +29,7 @@ const squares = (state = {}, action) => {
     }
     case SELECT_SQUARE: {
       const newState = { ...state }
-      Object.keys(newState).forEach((element) => {
-        newState[element]= {
-          ...newState[element],
-          "border-style": "dotted"
-        }
-      })
+      setBorderStyle(newState);
       newState[action.selected] = {
         ...newState[action.selected],
         ...action.style
@@ -41,6 +44,14 @@ const squares = (state = {}, action) => {
           ...action.style
         }
       }
+    }
+    case RESET_SELECTION: {
+      const newState = { ...state }
+      setBorderStyle(newState);
+      return newState;
+    }
+    case DELETE_ALL_SQUARE: {
+      return {}
     }
     default:
       return state;

@@ -1,6 +1,6 @@
 import { SET_SELECTED } from '../actions/selected'
 
-const selected = (state = 0, action) => {
+const selected = (state = null, action) => {
   switch (action.type) {
     case SET_SELECTED: {
       return action.zIndex

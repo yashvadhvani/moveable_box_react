@@ -1,5 +1,5 @@
-import { setZIndex } from './zIndex'
-import { addSquare, selectSquare } from './squares'
+import { resetZIndex, setZIndex } from './zIndex'
+import { addSquare, selectSquare, deleteAllSquare, resetSelection } from './squares'
 import { setSelected } from './selected'
 
 
@@ -20,7 +20,19 @@ const handleSelect = (zIndex) => (dispatch, getState) => {
   dispatch(selectSquare({ "border-style": "solid" }, selected))
 }
 
+const handleDeleteAll = () => (dispatch) => {
+  dispatch(setSelected(null));
+  dispatch(resetZIndex(0));
+  dispatch(deleteAllSquare())
+}
+
+const handleResetSelection = () => (dispatch) => {
+  dispatch(setSelected(null));
+  dispatch(resetSelection())
+}
 export {
   handleAdd,
-  handleSelect
+  handleSelect,
+  handleDeleteAll,
+  handleResetSelection
 }

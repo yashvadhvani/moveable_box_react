@@ -11,6 +11,7 @@ export default function Square(props) {
     className="square" 
     style={{...props.styles}}
     onClick = {() =>  dispatch(handleSelect(props.styles.zIndex))}>
+    {props.styles.zIndex}
     </div>
   )
 }

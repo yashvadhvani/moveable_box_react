@@ -1,7 +1,9 @@
 const ADD_SQUARE = 'ADD_SQUARE';
 const DELETE_SQUARE = 'DELETE_SQUARE';
+const DELETE_ALL_SQUARE = 'DELETE_ALL_SQUARE';
 const SELECT_SQUARE = 'SELECT_SQUARE';
 const MOVE_SQUARE = 'MOVE_SQUARE';
+const RESET_SELECTION = 'RESET_SELECTION';
 
 
 const addSquare = (style) => ({
@@ -20,10 +22,18 @@ const selectSquare = (style, selected) => ({
   selected
 })
 
+const resetSelection = (style, selected) => ({
+  type: RESET_SELECTION,
+})
+
 const moveSquare = (style, selected) => ({
   type: MOVE_SQUARE,
   style,
   selected
+})
+
+const deleteAllSquare = () => ({
+  type: DELETE_ALL_SQUARE,
 })
 
 const handleKey = (key) => (dispatch, getState) => {
@@ -102,8 +112,12 @@ export {
   DELETE_SQUARE,
   SELECT_SQUARE,
   MOVE_SQUARE,
+  DELETE_ALL_SQUARE,
+  RESET_SELECTION,
   addSquare,
   deleteSquare,
   selectSquare,
-  handleKey
+  handleKey,
+  deleteAllSquare,
+  resetSelection
 }
