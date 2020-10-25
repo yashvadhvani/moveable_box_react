@@ -2,7 +2,9 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import Button from './common/Button'
 import Square from './common/Square'
-import { handleAdd, handleDeleteAll, handleResetSelection } from '../actions/shared'
+import { 
+  handleAdd, handleDeleteAll, handleResetSelection, handleDelete
+} from '../actions/shared'
 import { handleKey } from '../actions/squares'
 import './Dashboard.css';
 
@@ -21,12 +23,15 @@ export default function Dashboard() {
     const handleKeyDown = event => {
       const { key } = event;
       dispatch(handleKey(key))
+      if(key === 'Delete' && selected){
+        dispatch(handleDelete(selected))
+      }
     };
     document.addEventListener('keydown', handleKeyDown)
     return () => {
       document.removeEventListener('keydown', handleKeyDown)
     }
-  }, [dispatch])
+  }, [dispatch, selected])
 
   return (
     <div>

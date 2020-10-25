@@ -94,9 +94,6 @@ const handleKey = (key) => (dispatch, getState) => {
           ))
         }
         break;
-      case 'Delete':
-        dispatch(deleteSquare(selected))
-        break;
       default:
         break;
     }
