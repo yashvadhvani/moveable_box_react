@@ -4,7 +4,7 @@ const setBorderStyle = (newState) =>{
   Object.keys(newState).forEach((element) => {
     newState[element]= {
       ...newState[element],
-      "border-style": "dotted"
+      borderStyle : "dotted"
     }
   })
 }

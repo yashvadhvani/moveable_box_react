@@ -40,7 +40,6 @@ const handleKey = (key) => (dispatch, getState) => {
   const { squares, selected } = getState();
   if (selected) {
     const selectedSquare = squares[selected];
-    console.log(selectedSquare)
     const top = parseInt(selectedSquare.top.substring(0, selectedSquare.top.length - 2), 10);
     const left = parseInt(selectedSquare.left.substring(0, selectedSquare.left.length - 2), 10);
     switch (key) {
@@ -99,7 +98,7 @@ const handleKey = (key) => (dispatch, getState) => {
     }
   } else {
     if (["w", "W", "ArrowUp", "s", "S", "ArrowDown", "a", "A", "ArrowLeft", "d", "D", "ArrowRight", "Delete"].includes(key)
-      && Object.keys(squares)
+      && Object.keys(squares).length > 0
     )
       alert('Please Select a box first')
   }

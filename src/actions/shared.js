@@ -18,13 +18,17 @@ const handleAdd = () => (dispatch, getState) => {
 const handleSelect = (zIndex) => (dispatch, getState) => {
   dispatch(setSelected(zIndex));
   const { selected } = getState();
-  dispatch(selectSquare({ "border-style": "solid" }, selected))
+  dispatch(selectSquare({ borderStyle : "solid" }, selected))
 }
 
 const handleDelete = () => (dispatch, getState) => {
   const { selected } = getState();
   dispatch(setSelected(null));
   dispatch(deleteSquare(selected));
+  const { squares } = getState();
+  if(!squares || Object.keys(squares).length === 0) {
+    dispatch(resetZIndex(0));
+  } 
 }
 
 const handleDeleteAll = () => (dispatch) => {
