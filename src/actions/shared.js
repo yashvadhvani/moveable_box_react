@@ -22,14 +22,15 @@ const handleSelect = (zIndex) => (dispatch, getState) => {
 }
 
 const handleDelete = () => (dispatch, getState) => {
-  const { selected } = getState();
+  const { selected, zIndex } = getState();
   dispatch(setSelected(null));
   dispatch(deleteSquare(selected));
   const { squares } = getState();
   if(!squares || Object.keys(squares).length === 0) {
     dispatch(resetZIndex());
-  } else {
-    dispatch(decrementZIndex())
+  }
+  else if(zIndex === selected){
+    dispatch(decrementZIndex());
   }
 }
 
