@@ -1,4 +1,4 @@
-import { resetZIndex, setZIndex } from './zIndex'
+import { decrementZIndex, resetZIndex, setZIndex } from './zIndex'
 import { addSquare, selectSquare, deleteAllSquare, resetSelection,
 deleteSquare } from './squares'
 import { setSelected } from './selected'
@@ -27,8 +27,10 @@ const handleDelete = () => (dispatch, getState) => {
   dispatch(deleteSquare(selected));
   const { squares } = getState();
   if(!squares || Object.keys(squares).length === 0) {
-    dispatch(resetZIndex(0));
-  } 
+    dispatch(resetZIndex());
+  } else {
+    dispatch(decrementZIndex())
+  }
 }
 
 const handleDeleteAll = () => (dispatch) => {
